@@ -4,7 +4,7 @@ import noteContext from "../context/notes/noteContext";
 
 function Note() {
   const context = useContext(noteContext);
-  const { notes, setNote } = context;
+  const { notes, setNote, addnote } = context;
 
   return (
     <div className="row">
