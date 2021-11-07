@@ -4,7 +4,8 @@ import Note from "./Note";
 function Home() {
   return (
     <>
-      <div className="container">
+      <div className="container" style={{marginTop:"2rem"}}>
+        <h2 className="my-2">Add a note</h2>
         <form>
           <div className="mb-3">
             <label for="exampleInputEmail1" className="form-label">
@@ -32,7 +33,7 @@ function Home() {
           </button>
         </form>
       </div>
-      <h1>Your Notes</h1>
+      <h2 className="my-3">Your Notes</h2>
       <Note />
     </>
   );
