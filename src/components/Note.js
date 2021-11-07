@@ -1,13 +1,18 @@
-import React from 'react'
-import NoteItem from './NoteItem'
+import React, { useContext } from "react";
+import NoteItem from "./NoteItem";
+import noteContext from "../context/notes/noteContext";
 
 function Note() {
-    return (
-        <div>
-            <h1>this is a note componenet</h1>
-            <NoteItem/>
-        </div>
-    )
+  const context = useContext(noteContext);
+  const { notes, setNote } = context;
+
+  return (
+    <div className="row">
+      {notes.map((note) => {
+        return <NoteItem note={note} />;
+      })}
+    </div>
+  );
 }
 
-export default Note
+export default Note;

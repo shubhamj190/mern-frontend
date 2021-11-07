@@ -1,11 +1,21 @@
-import React from 'react'
+import React from "react";
+import Note from "./Note";
 
-function NoteItem() {
-    return (
-        <div>
-            <h1>This is a note item component</h1>
+function NoteItem(props) {
+  const { note } = props;
+  console.log(note);
+
+  return (
+    <div className="col-md-4">
+      <div className="card text-white  bg-secondary mb-3 ">
+        <div className="card-header">{note.tag}</div>
+        <div className="card-body">
+          <h5 className="card-title">{note.title}</h5>
+          <p className="card-text">{note.description}</p>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default NoteItem
+export default NoteItem;
