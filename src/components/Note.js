@@ -1,17 +1,139 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteItem from "./NoteItem";
 import noteContext from "../context/notes/noteContext";
 
 function Note() {
   const context = useContext(noteContext);
-  const { notes, setNote, addnote } = context;
+  const { notes, fetchallnotes, getsinglenote } = context;
+
+  const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" });
+
+  useEffect(() => {
+    fetchallnotes();
+    // eslint-disable-next-line
+  }, []);
+  const ref = useRef(null);
+
+  const updatenote = (currentNote) => {
+    ref.current.click();
+    const notedetails = getsinglenote(currentNote);
+    notedetails
+      .then((result) => {
+        setNote({
+          etitle: result.title,
+          edescription: result.description,
+          etag: result.tag,
+          
+        })
+      })
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    // addnote(note.title, note.description, note.tag)
+  };
+
+  const onchange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
 
   return (
-    <div className="row">
-      {notes.map((note) => {
-        return <NoteItem key={note._id}note={note} />;
-      })}
-    </div>
+    <>
+      {/* <!-- Button trigger modal --> */}
+      <button
+        type="button"
+        className="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        style={{ display: "none" }}
+        ref={ref}
+      ></button>
+
+      {/* <!-- Modal --> */}
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Edit note
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <div>
+                <form>
+                  <div className="mb-3">
+                    <label htmlFor="etitle" className="form-label">
+                      Title
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="etitle"
+                      onChange={onchange}
+                      name="etitle"
+                      value={note.etitle}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="edescription" className="form-label">
+                      Description
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="edescription"
+                      onChange={onchange}
+                      name="edescription"
+                      value={note.edescription}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="etag" className="form-label">
+                      Tag
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="etag"
+                      onChange={onchange}
+                      name="etag"
+                      value={note.etag}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={handleClick}
+                  >
+                    Update Note
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        {notes.map((note) => {
+          return (
+            <NoteItem key={note._id} note={note} updatenote={updatenote} />
+          );
+        })}
+      </div>
+    </>
   );
 }
 

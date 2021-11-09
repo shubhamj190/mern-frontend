@@ -20,7 +20,7 @@ function AddNote() {
         <h2 className="my-2">Add a note</h2>
         <form>
           <div className="mb-3">
-            <label for="exampleInputTitle" className="form-label">
+            <label htmlFor="exampleInputTitle" className="form-label">
               Title
             </label>
             <input
@@ -32,7 +32,7 @@ function AddNote() {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputDescription" className="form-label">
+            <label htmlFor="exampleInputDescription" className="form-label">
               Description
             </label>
             <input
@@ -44,7 +44,7 @@ function AddNote() {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputTag" className="form-label">
+            <label htmlFor="exampleInputTag" className="form-label">
               Tag
             </label>
             <input
