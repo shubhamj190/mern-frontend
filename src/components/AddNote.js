@@ -1,4 +1,4 @@
-import React,{useContext, useState} from "react";
+import React,{useContext, useState, useEffect} from "react";
 import noteContext from "../context/notes/noteContext";
 function AddNote() {
   const context = useContext(noteContext);
@@ -6,9 +6,14 @@ function AddNote() {
 
   const [note, setNote] = useState({title:"", description:"",tag:""})
 
+  useEffect(() => {
+    setNote({title:"", description:"",tag:""})
+  }, [])
+
   const handleClick = (e)=>{
       e.preventDefault();
     addnote(note.title, note.description, note.tag)
+    setNote({title:"", description:"",tag:""})
   }
 
   const onchange = (e)=>{

@@ -46,10 +46,7 @@ const NoteState = (props) => {
 
     });
     const json=response.json()
-    console.log(json)
 
-
-    console.log("delete note with id" + id);
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
@@ -58,8 +55,9 @@ const NoteState = (props) => {
 // <------------------------------------------------------------------------------------------------------------------------->
   // Delete a note
 
-  const updatenote = async (id, title, description, tag) => {
+  const updateanote = async ({id, title, description, tag}) => {
     // api call for update the note
+
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
@@ -68,18 +66,13 @@ const NoteState = (props) => {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODZhZWM4YzM4ZTZhM2JhZTUyMWVlZiIsImlhdCI6MTYzNjIxOTUwM30.GU-94yehYPXyUCX4UVHPstgGVzIIGJqSygLhthAxsEc",
       },
 
-      body: JSON.stringify({title, description, tag}),
+      body: JSON.stringify({title:title, description:description, tag:tag}),
     });
+    const json= await response.json()
+    return json
 
     // update the note logic
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
-      if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
-      }
-    }
+    
   };
 // <------------------------------------------------------------------------------------------------------------------------->
   // fetch all notes
@@ -117,7 +110,7 @@ const NoteState = (props) => {
 
   return (
     <NoteContext.Provider
-      value={{ notes, setNotes, addnote, deletenote, updatenote, fetchallnotes, getsinglenote }}
+      value={{ notes, setNotes, addnote, deletenote, updateanote, fetchallnotes, getsinglenote }}
     >
       {props.children}
     </NoteContext.Provider>

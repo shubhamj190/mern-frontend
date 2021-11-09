@@ -4,31 +4,40 @@ import noteContext from "../context/notes/noteContext";
 
 function Note() {
   const context = useContext(noteContext);
-  const { notes, fetchallnotes, getsinglenote } = context;
+  const { notes, fetchallnotes, getsinglenote, updateanote } = context;
 
-  const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" });
+  const [note, setNote] = useState({id:"", etitle: "", edescription: "", etag: "" });
 
   useEffect(() => {
     fetchallnotes();
     // eslint-disable-next-line
   }, []);
   const ref = useRef(null);
+  const refClose = useRef(null);
 
   const updatenote = (currentNote) => {
     ref.current.click();
     const notedetails = getsinglenote(currentNote);
+
     notedetails
       .then((result) => {
         setNote({
+          id:result._id,
           etitle: result.title,
           edescription: result.description,
           etag: result.tag,
           
+          
         })
+        
       })
+      
+      
   };
 
   const handleClick = (e) => {
+    updateanote({id:note.id, title:note.etitle, description:note.edescription, tag:note.etag })
+    refClose.current.click();
     e.preventDefault();
     // addnote(note.title, note.description, note.tag)
   };
@@ -68,6 +77,7 @@ function Note() {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                ref={refClose}
               ></button>
             </div>
             <div className="modal-body">
