@@ -69,10 +69,20 @@ const NoteState = (props) => {
       body: JSON.stringify({title:title, description:description, tag:tag}),
     });
     const json= await response.json()
-    return json
+
+    let newNotes = JSON.parse(JSON.stringify(notes))
 
     // update the note logic
-    
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index];
+      if (element._id === id) {
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag; 
+        break; 
+      }
+    }  
+    setNotes(newNotes);
   };
 // <------------------------------------------------------------------------------------------------------------------------->
   // fetch all notes
