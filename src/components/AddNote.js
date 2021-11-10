@@ -34,6 +34,7 @@ function AddNote() {
               id="exampleInputTitle"
               onChange={onchange}
               name="title"
+              value={note.title}
             />
           </div>
           <div className="mb-3">
@@ -46,6 +47,7 @@ function AddNote() {
               id="exampleInputDescription"
               onChange={onchange}
               name="description"
+              value={note.description}
             />
           </div>
           <div className="mb-3">
@@ -58,6 +60,7 @@ function AddNote() {
               id="exampleInputTag"
               onChange={onchange}
               name="tag"
+              value={note.tag}
             />
           </div>
           
