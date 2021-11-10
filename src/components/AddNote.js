@@ -8,7 +8,7 @@ function AddNote() {
 
   useEffect(() => {
     setNote({title:"", description:"",tag:""})
-  }, [])
+  }, [setNote])
 
   const handleClick = (e)=>{
       e.preventDefault();
@@ -61,7 +61,7 @@ function AddNote() {
             />
           </div>
           
-          <button type="submit" className="btn btn-primary" onClick={handleClick}>
+          <button type="submit" className="btn btn-primary" onClick={handleClick} disabled={note.title.length<5 || note.description<5 || note.tag<3}>
             Add Note
           </button>
         </form>

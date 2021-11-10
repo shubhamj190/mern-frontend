@@ -11,7 +11,7 @@ function Note() {
   useEffect(() => {
     fetchallnotes();
     // eslint-disable-next-line
-  }, []);
+  }, [updateanote]);
   const ref = useRef(null);
   const refClose = useRef(null);
 
@@ -127,6 +127,7 @@ function Note() {
                     type="submit"
                     className="btn btn-primary"
                     onClick={handleClick}
+                    disabled={note.etitle.length<5 ||note.edescription<5 ||note.etag<3}
                   >
                     Update Note
                   </button>
@@ -137,6 +138,9 @@ function Note() {
         </div>
       </div>
       <div className="row">
+        <div className="container my-1">
+        {notes.length===0 ?"There are no notes to display": ""}
+        </div>
         {notes.map((note) => {
           return (
             <NoteItem key={note._id} note={note} updatenote={updatenote} />
