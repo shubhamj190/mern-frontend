@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteItem from "./NoteItem";
 import noteContext from "../context/notes/noteContext";
 
-function Note() {
+function Note(props) {
+  const {showAlert} =props
   const context = useContext(noteContext);
   const { notes, fetchallnotes, getsinglenote, updateanote } = context;
 
@@ -38,6 +39,7 @@ function Note() {
   const handleClick = (e) => {
     updateanote({id:note.id, title:note.etitle, description:note.edescription, tag:note.etag })
     refClose.current.click();
+    props.showAlert("Note update successfully", "success")
     e.preventDefault();
     // addnote(note.title, note.description, note.tag)
   };
@@ -143,7 +145,7 @@ function Note() {
         </div>
         {notes.map((note) => {
           return (
-            <NoteItem key={note._id} note={note} updatenote={updatenote} />
+            <NoteItem key={note._id} note={note} updatenote={updatenote} showAlert={props.showAlert} />
           );
         })}
       </div>

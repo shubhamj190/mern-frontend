@@ -1,13 +1,11 @@
-import React from "react";
+import React from 'react'
 
-function Alert(props) {
-  return (
-    <div>
-      <div className="alert alert-primary" role="alert">
-       {props.message}
-      </div>
-    </div>
-  );
+export default function Alert(props) {
+    return (
+        <div style={{height:"70px"}}>
+        {props.alert && <div className={`alert alert-${props.alert.typ} alert-dismissible fade show`} role="alert">
+        {props.alert.msg} 
+        </div>}
+        </div>
+    )
 }
-
-export default Alert;

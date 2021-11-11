@@ -40,6 +40,16 @@ const Navbar = () => {
                   About
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className={`nav-link ${location.pathname==="/login" ? "  " : ""}`} to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className={`nav-link ${location.pathname==="/signup" ? "  " : ""}`} to="/signup">
+                  Signup
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
