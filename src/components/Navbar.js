@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, {useEffect,} from "react";
 
 import {
-  Link, useLocation
+  Link, useLocation, useHistory
 } from "react-router-dom";
 
 const Navbar = () => {
@@ -10,6 +10,15 @@ const Navbar = () => {
   useEffect(() => {
   }, [location]);
 
+  const history=useHistory()
+
+  const handleLogout=(event)=>{
+    event.preventDefault();
+    localStorage.removeItem('token')
+    history.push('/login')
+  }
+
+  
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,6 +49,8 @@ const Navbar = () => {
                   About
                 </Link>
               </li>
+              {!localStorage.getItem('token')}
+
               <li className="nav-item">
                 <Link className={`nav-link ${location.pathname==="/login" ? "  " : ""}`} to="/login">
                   Login
@@ -49,6 +60,11 @@ const Navbar = () => {
                 <Link className={`nav-link ${location.pathname==="/signup" ? "  " : ""}`} to="/signup">
                   Signup
                 </Link>
+              </li>
+              <li className="nav-item">
+                <button className='nav-link border-0 b3-2' onClick={handleLogout}>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>

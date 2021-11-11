@@ -17,10 +17,10 @@ let history = useHistory();
             });
         
             const json= await response.json()
-            console.log(json)
+            // console.log("auth token",json.jwtData)
             if(json.success===true){
                 // save the auth token and redirect
-                localStorage.setItem('token',json.authtoken)
+                localStorage.setItem('token',json.jwtData)
                 history.push("/")
                 props.showAlert(" loggedin successfully",'success')
             }
