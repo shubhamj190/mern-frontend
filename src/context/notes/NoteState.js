@@ -9,7 +9,7 @@ const host = process.env.REACT_APP_HOST;
 
   const addnote = async (title, description, tag) => {
     //:API call
-    const response = await fetch(`${host}/api/notes/addnote`, {
+    const response = await fetch(`${host}api/notes/addnote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const host = process.env.REACT_APP_HOST;
 
   const deletenote = async(id) => {
 
-    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+    const response = await fetch(`${host}api/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const host = process.env.REACT_APP_HOST;
   const updateanote = async ({id, title, description, tag}) => {
     // api call for update the note
 
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+    const response = await fetch(`${host}api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const host = process.env.REACT_APP_HOST;
 
   const fetchallnotes =async ()=>{
     // api call for update the note
-    const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+    const response = await fetch(`${host}api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ const host = process.env.REACT_APP_HOST;
 
   const getsinglenote =async (id)=>{
     // api call for update the note
-    const response = await fetch(`${host}/api/notes/getsinglenote/${id}`, {
+    const response = await fetch(`${host}api/notes/getsinglenote/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
