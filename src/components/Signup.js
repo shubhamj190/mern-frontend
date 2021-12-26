@@ -9,7 +9,7 @@ let history = useHistory();
         const {name, email, password}=credentials
         event.preventDefault();
             //:API call
-            const response = await fetch('http://127.0.0.1:5000/api/auth/createuser/', {
+            const response = await fetch(`${process.env.REACT_APP_HOST}/api/auth/createuser/`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
