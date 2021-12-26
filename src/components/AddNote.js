@@ -22,7 +22,7 @@ function AddNote(props) {
   }   
   return (
     <div>
-      <div className="container" style={{ marginTop: "2rem" }}>
+      <div className="container col-md-6 col-sm-12" style={{ marginTop: "2rem" }}>
         <h2 className="my-2">Add a note</h2>
         <form>
           <div className="mb-3">
@@ -65,8 +65,8 @@ function AddNote(props) {
             />
           </div>
           
-          <button type="submit" className="btn btn-primary" onClick={handleClick} disabled={note.title.length<5 || note.description<5 || note.tag<3}>
-            Add Note
+          <button type="submit" className="btn btn-light" onClick={handleClick} disabled={note.title.length<5 || note.description<5 || note.tag<3}>
+           <b>Add Note</b>
           </button>
         </form>
       </div>

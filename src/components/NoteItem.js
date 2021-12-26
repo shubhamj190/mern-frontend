@@ -9,7 +9,7 @@ function NoteItem(props) {
 
   return (
     <div className="col-md-4">
-      <div className="card text-white  bg-secondary mb-3 ">
+      <div className="card text-white bg-secondary mb-3 ">
         <div className="card-header">{note.tag}</div>
         <div className="card-body">
           <h5 className="card-title">{note.title}</h5>

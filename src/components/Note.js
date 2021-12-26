@@ -77,7 +77,7 @@ function Note(props) {
         aria-hidden="true"
       >
         <div className="modal-dialog">
-          <div className="modal-content">
+          <div className="modal-content bg-dark text-light">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
                 Edit note
@@ -135,11 +135,11 @@ function Note(props) {
 
                   <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-light"
                     onClick={handleClick}
                     disabled={note.etitle.length<5 ||note.edescription<5 ||note.etag<3}
                   >
-                    Update Note
+                   <b>Update Note</b>
                   </button>
                 </form>
               </div>

@@ -34,8 +34,9 @@ let history = useHistory();
     }
 
     return (
-        <div className="container">
+        <div className="container col-md-6 col-sm-12">
            <div className="container">
+           <h1 className="text-center display-4">Login form</h1>
            <form onSubmit={handelClick} >
             <div className="mb-3">
                 <label htmlFor="email" className="form-label">Email</label>
@@ -46,7 +47,7 @@ let history = useHistory();
                 <label htmlFor="password" className="form-label">Password</label>
                 <input type="password" className="form-control" onChange={onchange} value={credentials.password} id="password" name="password"/>
             </div>
-            <button type="submit" className="btn btn-primary" >Submit</button>
+            <button type="submit" className="btn btn-light" ><b>Submit</b></button>
         </form>
            </div>
         </div>

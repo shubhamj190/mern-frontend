@@ -21,7 +21,7 @@ const Navbar = () => {
   
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Cloud-Notes
@@ -56,16 +56,22 @@ const Navbar = () => {
                   Login
                 </Link>
               </li>
+              {!localStorage.getItem('token') &&(
+
               <li className="nav-item">
                 <Link className={`nav-link ${location.pathname==="/signup" ? "  " : ""}`} to="/signup">
                   Signup
                 </Link>
               </li>
+              ) }
+              {localStorage.getItem('token') && (
               <li className="nav-item">
-                <button className='nav-link border-0 b3-2' onClick={handleLogout}>
+                <Link className='nav-link border-0 b3-2' onClick={handleLogout}>
                   Logout
-                </button>
+                </Link>
               </li>
+
+              )}
             </ul>
           </div>
         </div>
