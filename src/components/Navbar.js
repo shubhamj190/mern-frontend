@@ -49,13 +49,16 @@ const Navbar = () => {
                   About
                 </Link>
               </li>
-              {!localStorage.getItem('token')}
 
-              <li className="nav-item">
-                <Link className={`nav-link ${location.pathname==="/login" ? "  " : ""}`} to="/login">
-                  Login
-                </Link>
-              </li>
+              {!localStorage.getItem('token') && (
+                 <li className="nav-item">
+                 <Link className={`nav-link ${location.pathname==="/login" ? "  " : ""}`} to="/login">
+                   Login
+                 </Link>
+               </li>
+              )}
+
+             
               {!localStorage.getItem('token') &&(
 
               <li className="nav-item">
