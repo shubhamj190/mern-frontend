@@ -20,7 +20,7 @@ function Note(props) {
       history.push('/login')
     }
     
-  }, [updateanote]);
+  }, [note]);
   const ref = useRef(null);
   const refClose = useRef(null);
 

@@ -28,7 +28,7 @@ function AddNote(props) {
           <div className="mb-3">
             <label htmlFor="exampleInputTitle" className="form-label">
               Title
-            </label>
+            </label> <small style={{"fontSize":"10px"}}>(please put atleast 5 chars)</small>
             <input
               type="text"
               className="form-control"
@@ -41,7 +41,7 @@ function AddNote(props) {
           <div className="mb-3">
             <label htmlFor="exampleInputDescription" className="form-label">
               Description
-            </label>
+            </label> <small style={{"fontSize":"10px"}}>(please put atleast 5 chars)</small>
             <input
               type="text"
               className="form-control"
@@ -54,7 +54,7 @@ function AddNote(props) {
           <div className="mb-3">
             <label htmlFor="exampleInputTag" className="form-label">
               Tag
-            </label>
+            </label> 
             <input
               type="text"
               className="form-control"
